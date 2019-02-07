@@ -1,3 +1,15 @@
 .main {
-  text-align: center
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  padding: 16px;
+  margin-top: 100px;
+  height: 1500px; /* Used in this example to enable scrolling */
+}
+
+.left-side {
+  float: left;
+}
+
+.right-side {
+  float: right;
 }
