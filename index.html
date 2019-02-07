@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Thermostat</title>
+    <script src="src/thermostat.js"></script>
+    <script src="./jquery-compressed-3.3.1.min.js"></script>
+    <script>
+    $(document).ready(function() {
+      var thermostat = new Thermostat;
+      $('.temp').text(thermostat.temp);
+      $('.up').on('click', function() {
+        thermostat.up();
+        $('.temp').text(thermostat.temp);
+        $('.usage').text(thermostat.energyUsage())
+      });
+      $('.down').on('click', function() {
+        thermostat.down();
+        $('.temp').text(thermostat.temp);
+        $('.usage').text(thermostat.energyUsage())
+      });
+      $('.reset').on('click', function() {
+        thermostat.reset();
+        $('.temp').text(thermostat.temp);
+        $('.usage').text(thermostat.energyUsage())
+      });
+      $('.pws_off').on('click', function() {
+        thermostat.powerSavingOff();
+      });
+      $('.pws_on').on('click', function() {
+        thermostat.powerSavingOn();
+        $('.temp').text(thermostat.temp);
+        $('.usage').text(thermostat.energyUsage())
+      });
+      // var thermo = $(thermostat.energyUse)
+      $('.usage').text(thermostat.energyUsage())
+        $('.temp').text(thermostat.temp);
+        $('h1').css('color', 'green');
+        // $('.temp').text(thermostat.temp)
+      // if (thermostat.energyUse === 'Low Usage') { $('.temp').css('color', 'green'); };
+      //   $('.temp').text(thermostat.temp);
+    });
+
+
+    </script>
+  </head>
+  <body>
+    <div class="header">
+
+    </div>
+    <div class="main">
+      <div class="temperature">
+        <h1>
+          <span class="temp"></span>°C <span class="usage"></span>
+        </h1>
+      </div>
+      <form class="buttons" action="index.html" method="post">
+        <input class="up" type="button" name="up" value="+">
+        <input class="down" type="button" name="down" value="-">
+        <input class="pws_on" type="button" name="power saving on" value="ON">
+        <input class="pws_off" type="button" name="power saving off" value="OFF">
+        <input class="reset" type="button" name="reset" value="RESET">
+        <input class="up" type="button" name="energy usage" value="USAGE">
+      </form>
+    </div>
+    <div class="footer">
+
+    </div>
+  </body>
+</html>
