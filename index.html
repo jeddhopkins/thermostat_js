@@ -4,39 +4,55 @@
     <meta charset="utf-8">
     <title>Thermostat</title>
     <script src="src/thermostat.js"></script>
-    <script src="./jquery-compressed-3.3.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
     $(document).ready(function() {
+
       var thermostat = new Thermostat;
+
+      function energyUsageColour() {
+        thermostat.energyUsage();
+        if (thermostat.energyUsage() === 'Low Usage') { $('h1').css('color', 'green'); };
+        if (thermostat.energyUsage() === 'Medium Usage') { $('h1').css('color', 'orange'); };
+        if (thermostat.energyUsage() === 'High Usage') { $('h1').css('color', 'red'); }
+      };
+
+      function printTempAndUsage() {
+        $('.temp').text(thermostat.temp);
+        $('.usage').text(thermostat.energyUsage());
+      };
+
       $('.temp').text(thermostat.temp);
+        energyUsageColour();
+        printTempAndUsage();
+
       $('.up').on('click', function() {
         thermostat.up();
-        $('.temp').text(thermostat.temp);
-        $('.usage').text(thermostat.energyUsage())
+        energyUsageColour();
+        printTempAndUsage();
       });
+
       $('.down').on('click', function() {
         thermostat.down();
-        $('.temp').text(thermostat.temp);
-        $('.usage').text(thermostat.energyUsage())
+        energyUsageColour();
+        printTempAndUsage();
       });
+
       $('.reset').on('click', function() {
         thermostat.reset();
-        $('.temp').text(thermostat.temp);
-        $('.usage').text(thermostat.energyUsage())
+        energyUsageColour();
+        printTempAndUsage();
       });
+
       $('.pws_off').on('click', function() {
         thermostat.powerSavingOff();
       });
+
       $('.pws_on').on('click', function() {
         thermostat.powerSavingOn();
-        $('.temp').text(thermostat.temp);
-        $('.usage').text(thermostat.energyUsage())
+        energyUsageColour();
+        printTempAndUsage();
       });
-      $('.usage').text(thermostat.energyUsage())
-        $('.temp').text(thermostat.temp);
-        $('h1').css('color', 'green');
-      // if (thermostat.energyUse === 'Low Usage') { $('.temp').css('color', 'green'); };
-      //   $('.temp').text(thermostat.temp);
     });
 
 
